@@ -20,8 +20,7 @@
 2. Desenvolupament
    - Tecnologies emprades
    - Base de dades
-   - E/R
-      * En process 
+   - E/R 
    - SQL
    - Proves de programari
    - Estructura del programari
@@ -57,7 +56,6 @@
 2. Planificació
 * Necessitat de l'aplicació
   * User Persona (Buscar en Canva plantilles)   
-  
 * Altres solucions existents
   * Hi ha moltes pagines que fan lo mateix. Algunes:
     * https://es.qr-code-generator.com/
@@ -74,8 +72,8 @@
   * Icones
    > ![image](img/icons.png) 
   * Layout (Figma, mockflow...)
-          * En process
-2. Desenvolupament
+       * En process
+1. Desenvolupament
    - Tecnologies emprades
        * HTML, CSS, JS, PHP, SQL 
    - Base de dades
