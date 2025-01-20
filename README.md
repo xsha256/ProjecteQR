@@ -70,9 +70,9 @@
   * Tipografies
     * Nunito 
   * Icones
-   > ![image](img/icons.png) 
+    > ![image](img/icons.png) 
   * Layout (Figma, mockflow...)
-       * En process
+       * ![image](img/layout.png) 
 1. Desenvolupament
    - Tecnologies emprades
        * HTML, CSS, JS, PHP, SQL 
@@ -81,6 +81,7 @@
    - E/R
       * En process 
    - SQL
+     - MySQL
    - Proves de programari
    - Estructura del programari
    - UML
