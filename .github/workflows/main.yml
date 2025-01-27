@@ -24,7 +24,7 @@ jobs:
         run: npm ci
 
       - name: nmp build
-        working-directory: documentacio
+        working-directory: QRraDoc
         run: npm run build
 
       - name: Publish current workdir (which contains generated content) to GitHub Pages
