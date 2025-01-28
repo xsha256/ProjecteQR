@@ -3,11 +3,13 @@
 ## Apartats de la documentació
 
 0. Promoció
+
    - Nom de l'aplicació
    - Descripció en una frase
    - Quí som
    - Video promocional
 1. Planificació
+
    - Necessitat de l'aplicació
    - Altres solucions existents
    - Principals funcionalitats
@@ -18,6 +20,7 @@
      - Icones
      - Layout  (Figma, mockflow...)
 2. Desenvolupament
+
    - Tecnologies emprades
    - Base de dades
    - E/R
@@ -33,6 +36,7 @@
    - Descripció del procés de desenvolupament
      - Product Roadmap
 3. Manual d'usuari
+
    - Manual d'usuari complet
    - How To Guides
    - Quick Start
@@ -44,8 +48,7 @@
 6. Propostes de millora
 7. Bibliografia
 8. Annexos
-
-1. Promoció
+9. Promoció
 
 * Nom de l'aplicació:
   * QRra.
@@ -67,12 +70,15 @@
   * Generar codis QR d’adreces URL y guardarlos.
 * Guia d'estil https://design.theguardian.com/, https://design.duolingo.com/, https://resources.specialolympics.org/marketing-and-communications/special-olympics-brand
   * Logo
+   >  ![image](img/ProjecteQRGithub.png) 
   * Colors
+  > ![alt colors](./img/colors.png)
   * Tipografies
     * Nunito
   * Icones
+  > ![image](img/icons.png) 
   * Layout (Figma, mockflow...)
-    * ![image](img/layout.png)
+  > ![image](img/layout.png)
 
 1. Desenvolupament
    - Tecnologies emprades
