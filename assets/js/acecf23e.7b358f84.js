@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkqrradoc=self.webpackChunkqrradoc||[]).push([[1903],{1912:r=>{r.exports=JSON.parse('{"blogBasePath":"/ProjecteQR/qrradoc/blog","blogTitle":"Blog","authorsListPath":"/ProjecteQR/qrradoc/blog/authors"}')}}]);
