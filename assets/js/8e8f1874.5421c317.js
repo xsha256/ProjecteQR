@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkqrradoc=self.webpackChunkqrradoc||[]).push([[7170],{3215:e=>{e.exports=JSON.parse('{"metadata":{"permalink":"/ProjecteQR/qrradoc/blog","page":1,"postsPerPage":10,"totalPages":1,"totalCount":4,"blogDescription":"Blog","blogTitle":"Blog"}}')}}]);
