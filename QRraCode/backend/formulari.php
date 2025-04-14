@@ -21,8 +21,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if (empty($errors)) {
 
-        $conexionDB = mysqli_connect("azureqrra.database.windows.net",  "usuari", "Nador.!993", "azureqrra/contacto");
-        if (!$conexionDB) {
+        $connectionInfo = array("UID" => "usuari", "pwd" => "Nador.!993", "Database" => "contacto", "LoginTimeout" => 30, "Encrypt" => 1, "TrustServerCertificate" => 0);
+        $serverName = "tcp:azureqrra.database.windows.net,1433";
+        $conn = sqlsrv_connect($serverName, $connectionInfo);
+
+                if (!$conn) {
             die("Connection failed: "  . mysqli_connect_error());
         }
 
@@ -46,7 +49,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $sql = "INSERT INTO usuari (nom, cognoms, email, contrasenya) VALUES (?, ?, ?, ?)";
 
 
-        $stmt = $conexionDB->prepare($sql);
+        $stmt = $conn->prepare($sql);
 
         if ($stmt) {
             $contrasenya_hashed = password_hash($contrasenya, PASSWORD_DEFAULT);
