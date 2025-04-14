@@ -21,7 +21,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if (empty($errors)) {
 
-        $conexionDB = mysqli_connect("azureqrra.database.windows.net",  "usuari", "Nador.1993", "azureqrra/contacto");
+        $conexionDB = mysqli_connect("azureqrra.database.windows.net",  "usuari", "Nador.!993", "azureqrra/contacto");
         if (!$conexionDB) {
             die("Connection failed: "  . mysqli_connect_error());
         }
