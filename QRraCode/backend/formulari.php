@@ -63,7 +63,7 @@
                 $missatgeBenvinguda = function ($nom, $cognoms, $contrasenya, $adresaIP) {
                     echo "<p style='color:green'>Benvingut/da, $nom $cognoms! (IP: $adresaIP connexió: " . date("d-m-Y H:i:s") . ").</p>";
                     echo "<h3>
-                        <a href='./formulari.html'>Nuevo usuario</a>
+                        <a href='../frontend/index.html'>Nuevo usuario</a>
                         </h3> 
                         <h3>
                         <a href='./listaUsuaris.php'>Lista usuarios</a>
