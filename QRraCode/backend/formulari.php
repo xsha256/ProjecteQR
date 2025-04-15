@@ -1,6 +1,6 @@
 <?php
 $errors = [];
-error_reporting(error_level: E_ALL);
+error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -20,54 +20,43 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     if (empty($errors)) {
-
-        $connectionInfo = array("UID" => "usuari", "pwd" => "Nador.!993", "Database" => "contacto", "LoginTimeout" => 30, "Encrypt" => 1, "TrustServerCertificate" => 0);
+        $connectionInfo = array(
+            "UID" => "usuari", 
+            "PWD" => "Nador.!993", 
+            "Database" => "contacto", 
+            "LoginTimeout" => 30, 
+            "Encrypt" => 1, 
+            "TrustServerCertificate" => 0
+        );
         $serverName = "tcp:azureqrra.database.windows.net,1433";
         $conn = sqlsrv_connect($serverName, $connectionInfo);
 
-                if (!$conn) {
-            die("Connection failed: "  . mysqli_connect_error());
+        if (!$conn) {
+            die("Connection failed: " . print_r(sqlsrv_errors(), true));
         }
 
-        //! op 1
-        // $sql = "INSERT INTO usuari (nom, cognoms, email, contrasenya) VALUES ('" . $nom . "', '" . $cognoms . "', '" . $correu . "', '" . $contrasenya . "')";
-        // $inserta = mysqli_query($conexionDB, $sql);
-
-        // if (!$inserta) {
-        //      echo "Error: " . $sql . "<br>";
-        // } 
-
-        // $adresaIP = '127.0.0.1';
-        // $missatgeBenvinguda = function ($nom, $cognoms, $contrasenya, $adresaIP) {
-        //     echo "<p style='color:green'>Benvingut/da, $nom $cognoms $contrasenya! (IP: $adresaIP connexió: " . date("d-m-Y H:i:s pm") . ").</p>";
-        // };
-
-        // $missatgeBenvinguda($nom, $cognoms, $contrasenya, $adresaIP);
-
-
-        //! op 2
         $sql = "INSERT INTO usuari (nom, cognoms, email, contrasenya) VALUES (?, ?, ?, ?)";
-
-
-        $stmt = $conn->prepare($sql);
-
-        if ($stmt) {
-            $contrasenya_hashed = password_hash($contrasenya, PASSWORD_DEFAULT);
-
-            $stmt->bind_param("ssss", $nom, $cognoms, $correu, $contrasenya_hashed);
-
-            if ($stmt->execute()) {
-                $adresaIP = '127.0.0.1';
-                $missatgeBenvinguda = function ($nom, $cognoms, $contrasenya, $adresaIP) {
-                    echo "<p style='color:green'>Benvingut/da, $nom $cognoms $contrasenya! (IP: $adresaIP connexió: " . date("d-m-Y H:i:s pm") . ").</p>";
-                };
-                $missatgeBenvinguda($nom, $cognoms, $contrasenya_hashed, $adresaIP);
-            } else {
-                echo "<p style='color:red;'>Error al insertar: " . $stmt->error . "</p>";
-            }
-
-            $stmt->close();
+        $contrasenya_hashed = password_hash($contrasenya, PASSWORD_DEFAULT);
+        $params = array($nom, $cognoms, $correu, $contrasenya_hashed);
+        
+        $stmt = sqlsrv_prepare($conn, $sql, $params);
+        
+        if ($stmt === false) {
+            die("Prepare failed: " . print_r(sqlsrv_errors(), true));
         }
+
+        if (sqlsrv_execute($stmt)) {
+            $adresaIP = $_SERVER['REMOTE_ADDR'] ?? '127.0.0.1';
+            $missatgeBenvinguda = function ($nom, $cognoms, $contrasenya, $adresaIP) {
+                echo "<p style='color:green'>Benvingut/da, $nom $cognoms! (IP: $adresaIP connexió: " . date("d-m-Y H:i:s") . ").</p>";
+            };
+            $missatgeBenvinguda($nom, $cognoms, $contrasenya_hashed, $adresaIP);
+        } else {
+            echo "<p style='color:red;'>Error al insertar: " . print_r(sqlsrv_errors(), true) . "</p>";
+        }
+
+        sqlsrv_free_stmt($stmt);
+        sqlsrv_close($conn);
     } else {
         foreach ($errors as $error) {
             echo "<p style='color:red;'>$error</p>";
