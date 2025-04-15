@@ -11,7 +11,7 @@
 
 <body style="text-align: center">
     <h3>
-        <a href="./formulari.html">Back</a>
+        <a href="../frontend/index.html">Back</a>
     </h3>
     <?php
     $serverName = "tcp:azureqrra.database.windows.net,1433";
